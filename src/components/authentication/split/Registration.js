@@ -10,19 +10,17 @@ import Billing from 'components/app/e-commerce/billing/Billing';
 
 const Registration = () => {
 
-  const auth = useSelector(state => state.auth)
-  const [isPlan, setIsPlan] = useState(false)
-  const [isBill, setIsBill] = useState(false)
-  useEffect(() => {
-    setIsBill(false)
-    setIsPlan(false)
-  }, [])
-  console.log(isPlan)
+  // const auth = useSelector(state => state.auth)
+  // const [isPlan, setIsPlan] = useState(false)
+  // const [isBill, setIsBill] = useState(false)
+  // useEffect(() => {
+  //   setIsBill(false)
+  //   setIsPlan(false)
+  // }, [])
+  // console.log(isPlan)
   return (
     <AuthSplitLayout bgProps={{ image: bgImg }}>
-      {isPlan && !isBill && <PricingDefault setIsBill={setIsBill} />}
-      {!isPlan && !isBill && <>
-        <Flex alignItems="center" justifyContent="between">
+      <Flex alignItems="center" justifyContent="between">
           <h3>Register</h3>
           <p className="mb-0 fs--1">
             <span className="fw-semi-bold">Already User? </span>
@@ -30,9 +28,6 @@ const Registration = () => {
           </p>
         </Flex>
         <RegistrationForm layout="split" setIsPlan={setIsPlan} hasLabel />
-      </>}
-
-      {isBill && <Billing />}
     </AuthSplitLayout>
   );
 };

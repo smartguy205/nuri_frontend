@@ -8,8 +8,10 @@ import SocialAuthButtons from './SocialAuthButtons';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { registerAction, initialAuthData } from './split/store';
+import 'react-toastify/dist/ReactToastify.css';
 
-const RegistrationForm = ({ hasLabel, setIsPlan }) => {
+
+const RegistrationForm = ({ hasLabel }) => {
   // State
   const [formData, setFormData] = useState({
     username: '',
@@ -38,8 +40,8 @@ const RegistrationForm = ({ hasLabel, setIsPlan }) => {
   const navigate = useNavigate()
   useEffect(() => {
     if (auth.isRegistered) {
-
-      setIsPlan(true)
+      navigate('/confirm-mail')
+      // setIsPlan(true)
     }
 
   }, [auth])

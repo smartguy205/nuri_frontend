@@ -1,12 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { dispatch } from 'd3';
 import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const initialState = {
   isAuthenticated: false,
   user: null,
   error: null,
-  isRegistered: false
+  isRegistered: false,
+  isLoading: false
 };
 
 const authSlice = createSlice({
@@ -41,11 +44,17 @@ const authSlice = createSlice({
       state.user = null;
       state.isRegistered = false;
       state.error = null;
+    },
+    setUser: (state, action) => {
+      state.isLoading = true;
+      state.user = action.payload;
+      state.isAuthenticated = true;
+      state.isLoading = false;
     }
   },
 });
 
-export const { loginSuccess, loginFailure, logout, registerFailure, registerSuccess, initialAuth } = authSlice.actions;
+export const { loginSuccess, setUser, loginFailure, logout, registerFailure, registerSuccess, initialAuth } = authSlice.actions;
 
 export const login = (user) => async (dispatch) => {
   try {
@@ -71,6 +80,7 @@ export const logoutAction = () => async (dispacth) => {
 export const registerAction = (userData) => async (dispatch) => {
   try {
     const response = await axios.post('http://localhost:5000/signup', userData)
+    
     if (response.data.success) {
       dispatch(registerSuccess());
       toast.success(`Registered Success`, {
@@ -90,6 +100,14 @@ export const registerAction = (userData) => async (dispatch) => {
 export const initialAuthData = () => async (dispatch) => {
   try {
     dispatch(initialAuth())
+  } catch (error) {
+
+  }
+}
+
+export const setUserAction = (userData) => async(dispatch) => {
+  try {
+    dispatch(setUser(userData));
   } catch (error) {
 
   }

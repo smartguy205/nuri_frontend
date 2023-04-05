@@ -14,7 +14,7 @@ import SplitRegistration from 'components/authentication/split/Registration';
 import SplitForgetPassword from 'components/authentication/split/ForgetPassword';
 import SplitPasswordReset from 'components/authentication/split/PasswordReset';
 import SplitConfirmMail from 'components/authentication/split/ConfirmMail';
-import SplitLockScreen from 'components/authentication/split/LockScreen';
+import CheckPlan from 'components/authentication/split/CheckPlan';
 
 import PricingDefault from 'components/pages/pricing/pricing-default/PricingDefault';
 const FalconRoutes = () => {
@@ -36,7 +36,7 @@ const FalconRoutes = () => {
         element={<SplitForgetPassword />}
       />
       <Route
-        path="reset-password"
+        path="/billing"
         element={<SplitPasswordReset />}
       />
       <Route
@@ -44,8 +44,8 @@ const FalconRoutes = () => {
         element={<SplitConfirmMail />}
       />
       <Route
-        path="lock-screen"
-        element={<SplitLockScreen />}
+        path="/verify_email/:token"
+        element={<CheckPlan />}
       />
       <Route path="/registerPlan" element={<PricingDefault />} />
     </Routes>

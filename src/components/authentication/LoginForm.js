@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import SocialAuthButtons from './SocialAuthButtons';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from './split/store';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const LoginForm = ({ hasLabel, layout }) => {

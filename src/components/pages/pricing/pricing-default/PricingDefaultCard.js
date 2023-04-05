@@ -41,7 +41,8 @@ const PricingDefaultCard = ({
           <Button
             as={Link}
             variant={isFeatured ? 'primary' : 'outline-primary'}
-            onClick={() => setIsBill(true)}
+            // onClick={() => setIsBill(true)}
+            to="/billing"
           >
             {buttonText}
           </Button>
